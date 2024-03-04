@@ -1,14 +1,28 @@
 <template>
   <div class="ctr">
+    <questions
+      v-if="questionsAnswered < questions.length"
+      :questions="questions"
+    />
+    <result v-else />
+
     <button type="button" class="reset-btn">Reset</button>
   </div>
 </template>
 
 <script>
+import Questions from "./components/Questions.vue";
+import Result from "./components/Result.vue";
+
 export default {
   name: "App",
+  comments: {
+    Questions,
+    Result,
+  },
   date() {
     return {
+      questionsAnswered: 0,
       questions: [
         {
           q: "What is 2 + 2?",
@@ -88,5 +102,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
